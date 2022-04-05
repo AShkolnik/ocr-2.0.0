@@ -371,8 +371,8 @@ been called.
     glyphs = []
     for line in self.textlines:
       if(len(line.glyphs) > 0):
-	for glyph in line.glyphs:
-	  glyphs.append(glyph)
+        for glyph in line.glyphs:
+          glyphs.append(glyph)
     from gamera.toolkits.ocr.ocr_toolkit import show_bboxes
     return show_bboxes(self.img, glyphs)
 
@@ -384,15 +384,15 @@ been called..
     words = []
     for line in self.textlines:
       for word in line.words:
-	words.append(word)
+        words.append(word)
     final_bboxes = []
     if(len(words) > 0):
       for word in words:
-	cc = word[:1]
-	word_bbox = Rect(cc[0])
-	for glyph in word[1:]:
-	  word_bbox.union(glyph)
-	final_bboxes.append(word_bbox)
+        cc = word[:1]
+        word_bbox = Rect(cc[0])
+        for glyph in word[1:]:
+          word_bbox.union(glyph)
+        final_bboxes.append(word_bbox)
     from gamera.toolkits.ocr.ocr_toolkit import show_bboxes
     return show_bboxes(self.img, final_bboxes)
 

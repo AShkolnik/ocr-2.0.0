@@ -1,1 +1,1 @@
-import bbox_merging_mcmillan
+from . import bbox_merging_mcmillan

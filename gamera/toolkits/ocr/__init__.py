@@ -8,7 +8,7 @@ and may be omitted if you are not concerned with that.
 
 
 from gamera import toolkit
-import plugins
+from . import plugins
 #import wx
 
 

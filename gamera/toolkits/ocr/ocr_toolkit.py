@@ -94,7 +94,7 @@ as in the examples of the following table:
     if(strings[0] == "cursive"):
       return return_char(unicode_str[8:])
     else:
-      print "ERROR: Name not found:", name
+      print("ERROR: Name not found:", name)
       return ""
 
  
@@ -203,49 +203,49 @@ the documentation of `return_char`_.
       char = return_char(glyph.get_main_id(), extra_chars_dict)
       if (heuristic_rules == "roman"):
         # disambiguation of similar roman characters
-	if (char == "x" or char == "X"):
+        if (char == "x" or char == "X"):
           if __char_touches_top(glyph, line):
             glyph.classify_heuristic("latin.capital.letter.x")
           else:
             glyph.classify_heuristic("latin.small.letter.x")
-	  char = return_char(glyph.get_main_id())
+          char = return_char(glyph.get_main_id())
 
-	if (char == "p" or char == "P"):
+        if (char == "p" or char == "P"):
           if __char_touches_top(glyph, line):
             glyph.classify_heuristic("latin.capital.letter.p")
           else:
             glyph.classify_heuristic("latin.small.letter.p")
-	  char = return_char(glyph.get_main_id())
+          char = return_char(glyph.get_main_id())
 
-	if (char == "o" or char == "O"):
+        if (char == "o" or char == "O"):
           if __char_touches_top(glyph, line):
             glyph.classify_heuristic("latin.capital.letter.o")
           else:
             glyph.classify_heuristic("latin.small.letter.o")
-	  char = return_char(glyph.get_main_id())
+          char = return_char(glyph.get_main_id())
 
-	if (char == "w" or char == "W"):
+        if (char == "w" or char == "W"):
           if __char_touches_top(glyph, line):
             glyph.classify_heuristic("latin.capital.letter.w")
           else:
             glyph.classify_heuristic("latin.small.letter.w")
-	  char = return_char(glyph.get_main_id())
+          char = return_char(glyph.get_main_id())
 
-	if (char == "v" or char == "V"):
+        if (char == "v" or char == "V"):
           if __char_touches_top(glyph, line):
             glyph.classify_heuristic("latin.capital.letter.v")
           else:
             glyph.classify_heuristic("latin.small.letter.v")
-	  char = return_char(glyph.get_main_id())
+          char = return_char(glyph.get_main_id())
 
-	if (char == "z" or char == "Z"):
+        if (char == "z" or char == "Z"):
           if __char_touches_top(glyph, line):
             glyph.classify_heuristic("latin.capital.letter.z")
           else:
             glyph.classify_heuristic("latin.small.letter.z")
-	  char = return_char(glyph.get_main_id())
+          char = return_char(glyph.get_main_id())
 
-	if (char == "s" or char == "S"):
+        if (char == "s" or char == "S"):
           # not for long s
           if (glyph.get_main_id().upper() != "LATIN.SMALL.LETTER.LONG.S"):   
             if __char_touches_top(glyph, line):
@@ -258,7 +258,7 @@ the documentation of `return_char`_.
 	#  glyph.classify_heuristic("LATIN SMALL LETTER F")
 	#  char = return_char(glyph.get_main_id()) 
 
-	if (char == "'" or char == ","):
+        if (char == "'" or char == ","):
           if (glyph.ul_y < line.bbox.center_y):
             glyph.classify_heuristic("APOSTROPHE")
             char = "'"	
@@ -303,10 +303,10 @@ these have been united to a single character.
       minwidth = min([item.ncols,glyph.ncols])
       distance = item.lr_x - glyph.lr_x
       if(distance > 0 and distance <= minwidth*3):
-	remove.append(item)
-	remove.append(glyph)
-	new = union_images([item,glyph])
-	add.append(new)
+        remove.append(item)
+        remove.append(glyph)
+        new = union_images([item,glyph])
+        add.append(new)
   result.append(add) 		#result[0] == ADD
   result.append(remove)		#result[1] == REMOVE
   return result
@@ -430,7 +430,7 @@ The result is returned as a list of Textline_ objects.
 
     for elem in remove:
       if(elem in glyphs):
-	glyphs.remove(elem)
+        glyphs.remove(elem)
     for elem in add:
       glyphs.append(elem)
 
