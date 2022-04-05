@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.8.1: http://docutils.sourceforge.net/" />
+<title>PageSegmentation</title>
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="pagesegmentation">
+<h1 class="title">PageSegmentation</h1>
+
+<p><strong>Last modified</strong>: September 01, 2014</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#bbox-mcmillan" id="id1"><tt class="docutils literal">bbox_mcmillan</tt></a></li>
+</ul>
+</div>
+<div class="section" id="bbox-mcmillan">
+<h1><a class="toc-backref" href="#id1"><tt class="docutils literal">bbox_mcmillan</tt></a></h1>
+<p>[object] <strong>bbox_mcmillan</strong> ([object <em>glyphs</em>] = None, float <em>section_search_size</em> = 1.00, float <em>noise_mltplk</em> = 1.00, float <em>large_mltplk</em> = 20.00, float <em>stdev_mltplk</em> = 5.00)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Operates on:</th><td class="field-body"><tt class="docutils literal">Image</tt> [OneBit]</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">[object]</td>
+</tr>
+<tr class="field"><th class="field-name">Category:</th><td class="field-body">PageSegmentation</td>
+</tr>
+<tr class="field"><th class="field-name">Defined in:</th><td class="field-body">bbox_merging_mcmillan.py</td>
+</tr>
+<tr class="field"><th class="field-name">Author:</th><td class="field-body">Robert Butz, Karl MacMillan</td>
+</tr>
+</tbody>
+</table>
+<p>Returns the textlines in an image as connected components.
+The segmentation method is adapted from McMillan's segmentation method
+in roman_text.py. It allows a more individual segmentation through
+parameterization.</p>
+<p>Options:</p>
+<blockquote>
+<dl class="docutils">
+<dt><em>glyphs</em>:</dt>
+<dd>This list can be build out of a <tt class="docutils literal">cc_analysis</tt>. On default, this
+parameter is blank, which will cause the function to call
+<tt class="docutils literal">cc_analysis</tt> itself.</dd>
+<dt><em>section_search_size</em></dt>
+<dd>This optional parameter adjusts the calculated avg_glyph_size by
+multipling its value (default=1).</dd>
+<dt><em>noise_mltplk</em></dt>
+<dd>With this optional parameter one can adjust the noise_recognition
+rate independently from the calculated avg_glyph_size (default = 1).
+Values greater than 1 let the noise_removal detect bigger noise
+(but maybe even glyphs). Chose smaller values to avoid assigning
+small glyphs to noise.</dd>
+<dt><em>large_mltplk</em></dt>
+<dd>Analog to noise_mltplk one can set this parameter to manipulate the
+recognition of very large ccs according to the avg_glyph_size
+(default=20). Higher values lead to a better acceptance of
+above-average ccs. Beneficial, for example for big capital
+initials at the beginning of paragraphs such as seen in bibles.</dd>
+<dt><em>stdev_mltplk</em></dt>
+<dd>This parameter affects the line finding algorithm by excluding
+abnormally tall glyphs (default=5). The standard deviation will
+be calculated and multiplied by this parameter.</dd>
+</dl>
+</blockquote>
+</div>
+</div>
+</body>
+</html>
