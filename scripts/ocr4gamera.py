@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # Copyright (C) 2009-2010 Rene Baston, Christoph Dalitz
 #               2014      Fabian Schmitt
@@ -96,27 +96,27 @@ def correct(sentence, lang):
   
   p = Popen3('%s' % spell_prog, True)
   if opt.verbosity:
-    print 'Using %s for word-correction.\n' % spell_prog
+    print('Using %s for word-correction.\n' % spell_prog)
   if p.childerr.readlines() != []:
     if opt.verbosity:
-      print '% is not installed\n' % spell_prog
+      print('% is not installed\n' % spell_prog)
     spell_prog = 'ispell'
     if opt.verbosity:
-      print 'Using % for word-correction.\n' % spell_prog
+      print('Using % for word-correction.\n' % spell_prog)
     lang_opt = '-d'
     p = Popen3('%s Q' % spell_prog, True)
     if  p.childerr.readlines() != ['ispell:  specified file does not exist\n']:
-      print 'Wether aspell nor ispell is installed on your system. Please make sure to install either of this programs.'
+      print('Wether aspell nor ispell is installed on your system. Please make sure to install either of this programs.')
       exit
   
   # open with local setting language
   if (opt.lang == ''):
     if opt.verbosity:
       if spell_prog == 'aspell':
-	print 'No language was given. Will open aspell with locale-settings language.\n'
+        print('No language was given. Will open aspell with locale-settings language.\n')
       if spell_prog == 'ispell':
-	print 'No language was given. Will open ispell with default language.\n'
-    p = Popen3('%s -a' % spell_prog, True) # True is for also storing error object in return-value
+        print('No language was given. Will open ispell with default language.\n')
+        p = Popen3('%s -a' % spell_prog, True) # True is for also storing error object in return-value
   # user chosen language  
   else:
     p = Popen3('%s -a %s %s' % (spell_prog, lang_opt, lang), True)
@@ -124,7 +124,7 @@ def correct(sentence, lang):
 
   out = p.fromchild.readline() # first line gives information about programm
   if (out == '' ): #something went wrong
-    print p.childerr.readlines()
+    print(p.childerr.readlines())
     exit
       
   word_count = len(words)
@@ -140,22 +140,22 @@ def correct(sentence, lang):
       p.tochild.flush()
       out = p.fromchild.readline()
       while (out=='\n'):
-	out = p.fromchild.readline()
+        out = p.fromchild.readline()
       
       if(out[0] == '*'): #spell_prog says: word correct
-	new_sentence = new_sentence + word +sign
-	if(word_count):
-	  new_sentence = new_sentence + " "
-	continue
+        new_sentence = new_sentence + word +sign
+        if(word_count):
+          new_sentence = new_sentence + " "
+        continue
       elif(out[0] == '&'): #spell_prog says: word incorrect
-	out = out.split(" ")
-	if edit_distance(word, out[4][:-1]) <= opt.distance:
-	  word = out[4][:-1].decode('utf-8')
-	elif opt.verbosity:
-	  print('%d. word: \'%s\' was not corrected to \'%s\'. ' 
-	  'Edit_distance: %i is larger than distance: %i.\n' 
-	  % (len(words)-word_count, word, out[4][:-1],
-	     edit_distance(word, out[4][:-1]), opt.distance))
+        out = out.split(" ")
+        if edit_distance(word, out[4][:-1]) <= opt.distance:
+          word = out[4][:-1].decode('utf-8')
+        elif opt.verbosity:
+          print(('%d. word: \'%s\' was not corrected to \'%s\'. ' 
+          'Edit_distance: %i is larger than distance: %i.\n' 
+          % (len(words)-word_count, word, out[4][:-1],
+            edit_distance(word, out[4][:-1]), opt.distance)))
 	
     new_sentence = new_sentence + word + sign
     if(word_count):
@@ -227,7 +227,7 @@ while i< len(args):
   if args[i] in ("-h", "--help"):
     usage(0)
   if args[i] == "--version":
-    print VERSION
+    print(VERSION)
     sys.exit(0)
   elif args[i] in ("-d", "--deskew"):
     opt.deskew = True
@@ -313,7 +313,7 @@ while i< len(args):
     opt.heuristic_rules = args[i][len("--heuristic_rules="):].lower()
   # unknown option
   elif args[i][0] == '-':
-    print "Error: option %s does not exist" % args[i]
+    print("Error: option %s does not exist" % args[i])
     usage(1)
   else:
     # we assume it is an imagefile
@@ -375,7 +375,7 @@ cknn.from_xml_filename(opt.trainfile)
 for imagefile in imagefiles:
 
     if opt.verbosity > 0:
-        print "processing file '" + imagefile + "' ..."
+        print("processing file '" + imagefile + "' ...")
 
     img = load_image(imagefile)
     if img.data.pixel_type != ONEBIT:
@@ -403,7 +403,7 @@ for imagefile in imagefiles:
 
     if opt.ccsfilter:
         ccs = img.cc_analysis()
-        print "filter started on",len(ccs) ,"elements..."
+        print("filter started on",len(ccs) ,"elements...")
         median_black_area = median([cc.black_area()[0] for cc in ccs])
         newccs = []
         for cc in ccs:
@@ -416,16 +416,16 @@ for imagefile in imagefiles:
             cc.fill_white()
           else:
             new_ccs.append(cc)
-        print "filter done:", len(ccs)-len(newccs), "of", len(ccs), "CCs deleted."
+        print("filter done:", len(ccs)-len(newccs), "of", len(ccs), "CCs deleted.")
         ccs = new_ccs
 
     if opt.deskew:
       if opt.verbosity > 0:
-        print "\ntry to skew correct..."
+        print("\ntry to skew correct...")
       rotation = img.rotation_angle_projections(-10,10)[0]
       img = img.rotate(rotation,0)
       if opt.verbosity > 0:
-        print "rotated with",rotation,"angle"
+        print("rotated with",rotation,"angle")
 
     if opt.auto_group:
       if(opt.ccsfilter):
@@ -437,13 +437,13 @@ for imagefile in imagefiles:
       autogroup.parts_to_group = 3
       autogroup.grouping_distance = max([2,median_cc / 8])
       if opt.hocr_in == "":
-	    p = Page(img, classify_ccs=autogroup)
+        p = Page(img, classify_ccs=autogroup)
       else:
         p = hocrPage(img, opt.hocr_in, classify_ccs=autogroup)
       img.reset_onebit_image()
       if opt.verbosity > 0:
-        print "autogrouping glyphs activated."
-        print "maximal autogroup distance:", autogroup.grouping_distance
+        print("autogrouping glyphs activated.")
+        print("maximal autogroup distance:", autogroup.grouping_distance)
     else:
       if opt.hocr_in == "":
         p = Page(img)
@@ -451,28 +451,28 @@ for imagefile in imagefiles:
         p = hocrPage(img, opt.hocr_in)
 
     if opt.verbosity > 0:
-      print "start page segmentation..."
+      print("start page segmentation...")
       t = time.time()
 
     p.segment()
 
     if opt.verbosity > 0:
       t = time.time() - t
-      print "\t segmentation done [",t,"sec]"
+      print("\t segmentation done [",t,"sec]")
 
     if opt.verbosity > 1:
       rgbfilename = "debug_lines.png"
       rgb = p.show_lines()
       rgb.save_PNG(rgbfilename)
-      print "file '%s' written" % rgbfilename
+      print("file '%s' written" % rgbfilename)
       rgbfilename = "debug_chars.png"
       rgb = p.show_glyphs()
       rgb.save_PNG(rgbfilename)
-      print "file '%s' written" % rgbfilename
+      print("file '%s' written" % rgbfilename)
       rgbfilename = "debug_words.png"
       rgb = p.show_words()
       rgb.save_PNG(rgbfilename)
-      print "file '%s' written" % rgbfilename
+      print("file '%s' written" % rgbfilename)
 
     if opt.outputfile == "":
       sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
@@ -520,7 +520,7 @@ for imagefile in imagefiles:
         f.flush()
         f.close()
       else:
-        print line_text
+        print(dir(line_text))
 
 
     if opt.hocr_out:
@@ -534,4 +534,4 @@ for imagefile in imagefiles:
         f.close()
 		
     if opt.verbosity > 0 and opt.outputfile != "":
-      print "text has been written to file", opt.outputfile
+      print("text has been written to file", opt.outputfile)

@@ -22,6 +22,9 @@ init_gamera()
 from gamera.plugins import pagesegmentation
 from gamera.plugins.listutilities import median
 
+# added Version 2.0.0 https://docs.python.org/3/library/functools.html#functools.cmp_to_key
+from functools import cmp_to_key
+
 class Textline:
 #########################################################################
   """The ``Textline`` object stores information about a text line in its
@@ -94,8 +97,9 @@ extended by the union of the glyphs' bounding boxes.
 
   def sort_glyphs(self):
     """Sorts the characters in *Textline.glyphs* from left to right.
-"""
-    self.glyphs.sort(lambda x,y: cmp(x.ul_x, y.ul_x))
+""" 
+    def cmp(x, y): return (x > y) - (x < y)
+    self.glyphs.sort(key=cmp_to_key(lambda x,y: cmp(x.ul_x, y.ul_x)))
 
 
 class ClassifyCCs:

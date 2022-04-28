@@ -28,6 +28,9 @@ import unicodedata
 import sys
 import time
 
+# added in version 2.0.0 https://docs.python.org/3/library/functools.html#functools.cmp_to_key
+from functools import cmp_to_key
+
 def return_char(unicode_str, extra_chars_dict={}):
   """Converts a unicode character name to a unicode symbol.
 
@@ -382,7 +385,8 @@ The result is returned as a list of Textline_ objects.
     remove = []
     add = []
     result = []
-    glyphs.sort(lambda x,y: cmp(x.ul_x, y.ul_x))
+    def cmp(x,y): return (x > y) - (x < y)
+    glyphs.sort(key=cmp_to_key(lambda x,y: cmp(x.ul_x, y.ul_x)))
     for position, item in enumerate(glyphs):
       if(True):
       #if(not(glyph.lr_y >= line_bbox.center_y and glyph.lr_y-(glyph.nrows/3) <= line_bbox.lr_y)):  ## is this part of glyph higher then line.center_y ?
