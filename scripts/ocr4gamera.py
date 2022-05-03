@@ -24,7 +24,7 @@ import sys
 import time
 import os.path
 
-VERSION = "1.2.0"
+VERSION = "2.0.0"
 
 def usage(returncode):
   sys.stdout.write("Usage:\n\tocr4gamera -x <traindata> [options] <imagefile>\n" +\
@@ -520,7 +520,10 @@ for imagefile in imagefiles:
         f.flush()
         f.close()
       else:
-        print(dir(line_text))
+        import logging
+        logging.warning(line_text)
+        #small workaround, because line_text is treated like being of type bytes, while being a string because of weird signs like ſ which is actually an s
+        #print(line_text)
 
 
     if opt.hocr_out:
