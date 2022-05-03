@@ -1,7 +1,11 @@
 Changelog of the OCR Toolkit for Gamera
 =======================================
 
+Version 2.0.0, Mai 03, 2022
+---------------------------
+
  - Ported to Python 3 and Gamera 4
+
 
 Version 1.2.2, Nov 20, 2014
 ---------------------------

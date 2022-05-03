@@ -4,7 +4,7 @@ LICENSE
 MANIFEST.in
 setup.py
 version
-/home/shkolnik/Workspace/gamera/ported/ocr-2.0.0/gamera/toolkits/ocr/plugins/_bbox_merging_mcmillan.cpp
+/home/shkolnik/workspace/gamera/ported/ocr-2.0.0/gamera/toolkits/ocr/plugins/_bbox_merging_mcmillan.cpp
 doc/gendoc.py
 doc/html/classes.html
 doc/html/default.css
