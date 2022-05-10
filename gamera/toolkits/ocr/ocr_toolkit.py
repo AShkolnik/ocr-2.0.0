@@ -197,6 +197,7 @@ the documentation of `return_char`_.
 
 """
   wordlist = line.words
+  #print(dir(wordlist))
   s = ""
   char = ""
   for i in range(len(wordlist)):

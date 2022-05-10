@@ -505,6 +505,7 @@ for imagefile in imagefiles:
           continue
 
       line.sort_glyphs()
+      # ERROR?in gamera/toolkits/ocr/ocr_toolkit.py
       line.text =  textline_to_string(line, heuristic_rules=opt.heuristic_rules, extra_chars_dict=extra_chars_dict)
       if opt.dict_correct:
         line.text = correct(line.text, opt.lang)
@@ -520,10 +521,7 @@ for imagefile in imagefiles:
         f.flush()
         f.close()
       else:
-        import logging
-        logging.warning(line_text)
-        #small workaround, because line_text is treated like being of type bytes, while being a string because of weird signs like ſ which is actually an s
-        #print(line_text)
+        sys.stdout.buffer.write(bytes(line_text + "\n",'utf-8'))
 
 
     if opt.hocr_out:
