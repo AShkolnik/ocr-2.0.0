@@ -435,7 +435,7 @@ for imagefile in imagefiles:
       median_cc = int(median([cc.nrows for cc in the_ccs]))
       autogroup = ClassifyCCs(cknn)
       autogroup.parts_to_group = 3
-      autogroup.grouping_distance = max([2,median_cc / 8])
+      autogroup.grouping_distance = int(max([2,median_cc / 8]))
       if opt.hocr_in == "":
         p = Page(img, classify_ccs=autogroup)
       else:
