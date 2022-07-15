@@ -1,0 +1,21 @@
+=======
+Plugins
+=======
+
+By categories
+-------------
+
+- PageSegmentation_
+
+  - bbox_mcmillan_
+
+Alphabetical
+-------------
+
+
+**B**
+
+bbox_mcmillan_
+
+.. _PageSegmentation: pagesegmentation.html#pagesegmentation
+.. _bbox_mcmillan: pagesegmentation.html#bbox-mcmillan

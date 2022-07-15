@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: ocr
+Version: 2.0.0
+Summary: An addon OCR toolkit for the Gamera framework for document analysis and recognition.
+Home-page: http://gamera.sourceforge.net/
+Author: Rene Baston and Christoph Dalitz
+Author-email: UNKNOWN
+License: GNU GPL version 2
+Description: UNKNOWN
+Platform: UNKNOWN

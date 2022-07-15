@@ -1,0 +1,13 @@
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/classes.py
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/__init__.py
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/ocr_toolkit.py
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/plugins/__init__.py
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/plugins/bbox_merging_mcmillan.py
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/__pycache__/classes.cpython-36.pyc
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/__pycache__/__init__.cpython-36.pyc
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/__pycache__/ocr_toolkit.cpython-36.pyc
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/plugins/__pycache__/__init__.cpython-36.pyc
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/plugins/__pycache__/bbox_merging_mcmillan.cpython-36.pyc
+/usr/local/lib/python3.6/dist-packages/gamera/toolkits/ocr/plugins/_bbox_merging_mcmillan.cpython-36m-x86_64-linux-gnu.so
+/usr/local/bin/ocr4gamera.py
+/usr/local/lib/python3.6/dist-packages/ocr-2.0.0.egg-info

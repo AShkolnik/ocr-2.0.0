@@ -89,6 +89,7 @@ as in the examples of the following table:
   name = name.replace(".", " ")
   
   try:
+    sys.stdout.buffer.write(name.encode())
     return unicodedata.lookup(name)
   except KeyError:
     strings = unicode_str.split(".")
@@ -98,6 +99,7 @@ as in the examples of the following table:
       return return_char(unicode_str[8:])
     else:
       print("ERROR: Name not found:", name)
+      
       return ""
 
  
@@ -117,7 +119,7 @@ with
     *threshold*:
       Horizontal white space greater than *threshold* will be considered
       a word separating gap. When ``None``, the threshold value is
-      calculated automatically as 2.5 times teh median white space
+      calculated automatically as 2.5 times the median white space
       between adjacent glyphs.
   
 The result is a nested list of glyphs with each sublist representing
@@ -181,7 +183,7 @@ with
       comma, which have the same shape and only differ in their position
       relative to the baseline.
 
-      When set to \"roman\", several rules specific for latin alphabeths
+      When set to \"roman\", several rules specific for latin alphabets
       are applied.
     
     *extra_chars_dict*
@@ -190,7 +192,7 @@ with
       Will be passed to `return_char`_.
 
 As this function uses `return_char`_, the class names of the glyphs in
-*textline* must corerspond to unicode character names, as described in
+*textline* must correspond to unicode character names, as described in
 the documentation of `return_char`_.
 
 .. _`return_char`: #return-char

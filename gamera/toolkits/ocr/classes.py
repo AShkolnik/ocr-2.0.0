@@ -168,12 +168,9 @@ class ClassifyCCs:
         if self.parts_to_group > 1 and distance < 0:
             distance = int(median([c.nrows for c in ccs]))
         if self.parts_to_group > 1:
-            print("length:", len(ccs))
-            print("distance", distance)
-            print("parts to group", self.parts_to_group)
-            ccs = self.knn.group_and_update_list_automatic(ccs,grouping_function=ShapedGroupingFunction(distance),
+            ccs = self.knn.group_and_update_list_automatic(ccs,
+							   grouping_function=ShapedGroupingFunction(distance),
                                                            max_parts_per_group=self.parts_to_group)
-            #ccs = self.knn.group_and_update_list_automatic(ccs,grouping_function=BoundingBoxGroupingFunction(distance),max_parts_per_group=self.parts_to_group)
         else:
             ccs = self.knn.classify_and_update_list_automatic(ccs)
         return ccs

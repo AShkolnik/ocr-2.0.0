@@ -12,11 +12,10 @@ if __name__ == '__main__':
    try:
       from gamera.toolkits.ocr.plugins import bbox_merging_mcmillan
    except ImportError:
-      print "WARNING:"
-      print "This `ocr` toolkit must be installed before generating"
-      print "the documentation.  For now, the system will skip generating"
-      print "documentation for the plugins."
-      print
+      print("WARNING:")
+      print("This `ocr` toolkit must be installed before generating")
+      print("the documentation.  For now, the system will skip generating")
+      print("documentation for the plugins.\n")
 
    # Step 2:
    # Generate documentation for this toolkit
